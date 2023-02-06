@@ -5,13 +5,15 @@ info:
   version: '1.1.0'
   contact: 
     name: "Open AI"
-    url: "https://api.openai.com/v1"
+    url: "https://api.cbs.kong-cx.com"
     email: "support@openai.com"
 servers:
-  - url: https://api.openai.com/v1
+  - url: https://api.cbs.kong-cx.com
 tags:
 - name: OpenAI
   description: The OpenAI REST API
+security:
+  - bearerAuth: []
 paths:
   /curie/completions:
     post:
@@ -19,7 +21,7 @@ paths:
       description: Create completion request using Curie Model - less accurate
       tags:
       - OpenAI
-      summary: Creates a completion for the provided prompt and parameters
+      summary: Creates a completion for the provided prompt and parameters using Curie Model - less accurate
       requestBody:
         required: true
         content:
@@ -54,7 +56,7 @@ paths:
       description: Create completion request using Davinci Model - which is more accurate
       tags:
       - OpenAI
-      summary: Creates a completion for the provided prompt and parameters
+      summary: Creates a completion for the provided prompt and parameters using Davinci Model - which is more accurate
       requestBody:
         required: true
         content:
@@ -84,8 +86,11 @@ paths:
               "temperature": 0
             }'
 components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
   schemas:
-
     CreateCompletionRequest:
       type: object
       properties:
