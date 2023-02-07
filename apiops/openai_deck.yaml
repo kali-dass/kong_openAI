@@ -1,0 +1,28 @@
+_format_version: "1.1"
+services:
+  - name: OpenAI_My_API
+    protocol: https
+    host: api.cbs.kong-cx.com
+    port: 443
+    path: /v1
+    plugins: []
+    routes:
+      - tags:
+          &a1
+          - OAS3_import
+          - OAS3file_openai_completion.yaml
+          - openAI-API
+        name: OpenAI_My_API-createCompletionCurie
+        methods:
+          - POST
+        paths:
+          - /curie/completions$
+        strip_path: false
+      - tags: *a1
+        name: OpenAI_My_API-createCompletionDavinci
+        methods:
+          - POST
+        paths:
+          - /davinci/completions$
+        strip_path: false
+    tags: *a1
