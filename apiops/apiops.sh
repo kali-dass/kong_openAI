@@ -11,13 +11,15 @@ inso generate config openai_completion.yaml -o openai_deck.yaml --tags "openAI-A
 deck convert --from kong-gateway-2.x --to kong-gateway-3.x \
 --input-file openai_deck.yaml --output-file konnect.yaml
 
-## Deploy Kong config to Kong
+## Deploy Kong config to Kong and servicehub
+deck sync --konnect-token "$PAT" \
+--konnect-runtime-group-name default --skip-consumers --konnect-addr "https://us.api.konghq.com" \
+--select-tag openAI-API-test,_KonnectService:example --silence-events -s konnect.yaml
+
+## Deploy to runtime group but not servicehub
 deck sync --konnect-token "$PAT" \
 --konnect-runtime-group-name default --skip-consumers --konnect-addr "https://us.api.konghq.com" \
 --select-tag openAI-API-test --silence-events -s konnect.yaml
-
-
-
 
 
 

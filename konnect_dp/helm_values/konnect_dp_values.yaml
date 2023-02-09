@@ -26,4 +26,4 @@ ingressController:
   enabled: false
   installCRDs: false
 
-replicaCount: 2
+replicaCount: 1
