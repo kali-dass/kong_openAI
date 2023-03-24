@@ -5,7 +5,11 @@ This is sample Chat GPT with kong.
 - Chat GPT openAI API shrinked version for chatting purpose only
 - Example openAI API readme file for quick start
 - APIOps example to take the openAI API specs and auto deploy
+    - Run lint
+    - Run test
+    - Deploy to Kong
     - Enable service hub
+    - Add Readme to developer portal
 
 ## Folders
 
