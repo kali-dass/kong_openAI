@@ -21,8 +21,7 @@ deck sync --konnect-token "$PAT" \
 --konnect-runtime-group-name default --skip-consumers --konnect-addr "https://us.api.konghq.com" \
 --select-tag openAI-API-test --silence-events -s konnect.yaml
 
-
-
+exit
 
 ## deploy using tags
 deck sync --konnect-token "$PAT" \
